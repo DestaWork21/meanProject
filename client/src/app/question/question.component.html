@@ -1,0 +1,26 @@
+<button [routerLink]="['/questions']">Home</button>
+<button [routerLink]="['/addNewQuestion']">Add a question</button>
+<button [routerLink]="['']" id="logout">Logout</button>
+
+<h1>New Question</h1>
+
+<form (submit)="createQuestion()">
+  Question:
+  <div *ngIf="!content.valid" class="error">Question must have at least 10 characters.</div>
+  <p>
+    <textarea 
+      required
+      name="question.content" 
+      rows="2" cols="30" 
+      [(ngModel)]="question.content" 
+      minlength="10" 
+      #content="ngModel"
+      ></textarea>
+  </p>
+  Description (optional):
+  <p>
+    <textarea name="question.description" rows="2" cols="30" [(ngModel)]="question.description"></textarea>
+  </p>
+  <p><button [routerLink]="['/questions']">Cancel</button> <input type="submit" value="Ask a question!"></p>
+
+</form>

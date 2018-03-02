@@ -1,0 +1,23 @@
+<button [routerLink]="['/questions']">Home</button>
+<button [routerLink]="['/showAnswers', question_id]">Go Back to Question</button>
+<button [routerLink]="['']" id="logout">Logout</button>
+
+<h1>New Answer</h1>
+
+<form (submit)="createAnswer()">
+  Your Answer:
+  <div class="error" *ngIf="!content.valid">Answers must have at least 5 characters.</div>
+  <p><textarea 
+    required
+    minlength="5"
+    name="answer.content" 
+    rows="2" 
+    cols="30" 
+    [(ngModel)]="answer.content"
+    #content="ngModel"
+    ></textarea>
+  </p>
+  Support Details (optional):
+  <p><textarea name="answer.details" rows="2" cols="30" [(ngModel)]="answer.details"></textarea></p>
+  <p><button [routerLink]="['/questions']">Cancel</button><input type="submit" value="Submit Answer"></p>
+</form>

@@ -1,0 +1,24 @@
+<div class="color-con">
+    <div>
+        <button [routerLink]="['/questions']">Home</button>
+        <button [routerLink]="['/addNewQuestion']">Add a question</button>
+        <button [routerLink]="['']" id="logout">Logout</button>
+    </div>
+    <div>
+        <h2>Welcome {{user?.username}}!</h2>
+        <p><input type="text" [(ngModel)]="question" placeholder="Search Questions"></p>
+    </div>
+    <div>
+        <table>
+            <th>Question</th>
+            <th>Answers</th>
+            <tr *ngFor = "let question of questions | filter:question" >
+                <td>{{question.content}}</td>
+                <td>{{ question._answers.length }}</td>
+                <td><a [routerLink]="['/showAnswers', question._id]">Show</a></td>
+                <td><a [routerLink]="['/addNewAnswer', question._id]">Answer</a></td>
+            </tr>
+        </table>  
+    </div>
+
+</div>

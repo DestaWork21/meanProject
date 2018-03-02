@@ -1,0 +1,51 @@
+<h2>Q&A</h2>
+<div class="flex-container">
+<div class="flex">
+<h3>Registration</h3>
+
+<div *ngIf="user.errors">
+  <h3 *ngFor="let err of user.errors" class="error">{{ err.message }}</h3>
+</div>
+<form (submit)="register()">
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td><input type="text" name="user.username" [(ngModel)]="user.username"></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" name="user.password" [(ngModel)]="user.password"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Register"></td>
+    </tr>
+  </table>  
+</form>
+</div>
+
+
+
+<div class="flex">
+ <h3>Login</h3>
+  <h3 *ngIf="loggedIn.errors" class="error">{{loggedIn.errors}}</h3>
+
+  <form (submit)="login()">
+    <table>
+      <tr>
+        <td>Username:</td>
+        <td><input type="text" name="loggedIn.username" [(ngModel)]="loggedIn.username"></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="loggedIn.password" [(ngModel)]="loggedIn.password"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" value="Login"></td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+</div>

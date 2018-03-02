@@ -1,0 +1,33 @@
+<button [routerLink]="['/questions']">Home</button>
+<button [routerLink]="['/addNewAnswer', question_id]">Answer this Question</button>
+<button [routerLink]="['']" id="logout">Logout</button>
+
+<h3>Question</h3>
+<table>
+  <tr>
+    <th>Content</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>{{ question?.content }}</td>
+    <td>{{ question?.description }}</td>
+  </tr>
+</table>
+
+<h3>Answers</h3>
+<table>
+  <tr>
+    <th>User name</th>
+    <th>Content</th>
+    <th>Details</th>
+    <th>Like Count</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let answer of question?._answers">
+    <td>{{ answer._user.username }}</td>
+    <td>{{ answer.content }}</td>
+    <td>{{ answer.details }}</td>
+    <td>{{ answer.likes }}</td>
+    <td><button (click)="likeAnswer(answer)">like</button></td>
+  </tr>
+</table>
